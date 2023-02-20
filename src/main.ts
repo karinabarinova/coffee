@@ -7,7 +7,10 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true, //removes properties not listed in corresponding DTOs
     transform: true, //transforms payload to its corresponding type, make primitive types conversion
-    forbidNonWhitelisted: true //throws an error if any non whitelisted properties are present
+    forbidNonWhitelisted: true, //throws an error if any non whitelisted properties are present
+    transformOptions: {
+      enableImplicitConversion: true
+    }
   }))
   await app.listen(3000);
 }
